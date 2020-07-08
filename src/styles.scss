@@ -23,6 +23,18 @@ body {
   width: 60%;
 }
 
+.buttons-cell {
+  width: 120px;
+}
+
+.table-header {
+  .table-header--left-pane {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+}
+
 table {
   width: 100%;
 }

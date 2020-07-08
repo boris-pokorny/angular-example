@@ -1,16 +1,19 @@
 <div class="table-header">
-    <div class="table-header--title">
-      <h4>{{ title }}</h4>
+  <div class="table-header--title">
+    <h4>{{ title }}</h4>
+  </div>
+
+  <div class="table-header--left-pane">
+    <div *ngIf="showFilter">
+      <mat-form-field>
+        <input
+          matInput
+          (keyup)="applyFilter($event.target.value)"
+          placeholder="Search"
+        />
+      </mat-form-field>
     </div>
-  
-    <!-- <mat-form-field>
-      <input
-        matInput
-        (keyup)="applyFilter($event.target.value)"
-        placeholder="Search"
-      />
-    </mat-form-field> -->
-  
+
     <button
       #addButton
       mat-icon-button
@@ -22,11 +25,11 @@
       <mat-icon>add_circle</mat-icon>
     </button>
   </div>
-  
-  <div *ngIf="showContent; else noContent">
-    <ng-content></ng-content>
-  </div>
-  <ng-template #noContent>
-    <h4>No data</h4>
-  </ng-template>
-  
+</div>
+
+<div *ngIf="showContent; else noContent">
+  <ng-content></ng-content>
+</div>
+<ng-template #noContent>
+  <h4>No data</h4>
+</ng-template>
