@@ -1,5 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 
+@mixin left-align {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
 html,
 body {
   height: 100%;
@@ -29,10 +35,12 @@ body {
 
 .table-header {
   .table-header--left-pane {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+    @include left-align;
   }
+}
+
+.left-align {
+  @include left-align;
 }
 
 table {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as userActions from '../../store/actions/user.actions';
@@ -16,9 +16,11 @@ import { takeUntil } from 'rxjs/operators';
   templateUrl: './user-editor.component.html',
   styleUrls: ['./user-editor.component.scss'],
 })
-export class UserEditorComponent extends ConnectedComponent implements OnInit {
+export class UserEditorComponent extends ConnectedComponent
+  implements OnInit, OnDestroy {
   form: FormGroup;
   loading = false;
+  isEdit = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -51,8 +53,14 @@ export class UserEditorComponent extends ConnectedComponent implements OnInit {
       .subscribe((user: ISingleUser) => {
         if (user) {
           this.form.patchValue(user);
+          this.isEdit = true;
         }
       });
+  }
+
+  ngOnDestroy() {
+    this.store.dispatch(userActions.loadUserDetailSuccess(null));
+    super.ngOnDestroy();
   }
 
   onCancel() {

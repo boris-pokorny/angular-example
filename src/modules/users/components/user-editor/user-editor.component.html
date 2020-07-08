@@ -1,7 +1,16 @@
-<button mat-icon-button (click)="onCancel()" [disabled]="false">
-  Close editor
-  <mat-icon>close</mat-icon>
-</button>
+<div *ngIf="isEdit; else newRecord">
+  <h2>Edit user</h2>
+</div>
+
+<ng-template #newRecord>
+  <h2>New user</h2>
+</ng-template>
+
+<div class="left-align">
+  <button mat-icon-button (click)="onCancel()" [disabled]="false">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
 
 <div [formGroup]="form" class="form-vertical">
   <mat-form-field class="form-field">
@@ -12,9 +21,6 @@
       type="email"
       required
     />
-    <!-- <mat-error *ngIf="getErrorMessage('name') as message">{{
-        message | translate
-      }}</mat-error> -->
   </mat-form-field>
 
   <mat-form-field class="form-field">
@@ -26,10 +32,21 @@
   </mat-form-field>
 </div>
 
-<button
-  mat-raised-button
-  (click)="onConfirm()"
-  [disabled]="form.invalid || form.pristine"
->
-  Save
-</button>
+<div class="left-align">
+  <button
+    mat-raised-button
+    (click)="onCancel()"
+    [disabled]="false"
+    cdkFocusInitial
+  >
+    Cancel
+  </button>
+
+  <button
+    mat-raised-button
+    (click)="onConfirm()"
+    [disabled]="form.invalid || form.pristine"
+  >
+    Save
+  </button>
+</div>
