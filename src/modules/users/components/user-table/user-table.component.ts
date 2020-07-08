@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild, Input } from "@angular/core";
-import { TableBase } from "../table-base";
+import { TableBase } from "../../../app-core/components/table-base";
 import { ISingleUser, IUserState } from "../../store/users.state";
 import { Router, ActivatedRoute } from "@angular/router";
-import { TableButtonsComponent } from "../table-buttons/table-buttons.component";
+import { TableButtonsComponent } from "../../../app-core/components/table-buttons/table-buttons.component";
 import { MatDialog } from "@angular/material/dialog";
 import { DeleteDialogComponent } from "../delete-dialog/delete-dialog.component";
 import * as userActions from "../../store/actions/user.actions";

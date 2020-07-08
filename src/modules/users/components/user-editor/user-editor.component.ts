@@ -8,7 +8,7 @@ import {
   getUserList,
   getUserDetail,
 } from '../../store/selectors/user.selectors';
-import { ConnectedComponent } from '../connected-component';
+import { ConnectedComponent } from '../../../app-core/components/connected-component';
 import { takeUntil } from 'rxjs/operators';
 
 @Component({

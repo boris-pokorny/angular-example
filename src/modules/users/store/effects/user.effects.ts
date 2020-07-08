@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import * as userActions from '../actions/user.actions';
-import { ApiService } from '../../services/api.service';
+import { ApiService } from '../../../app-core/services/services/api.service';
 import { switchMap, map, catchError } from 'rxjs/operators';
 import { IUserList, ISingleUser, IUserDetail } from '../users.state';
 import { HttpErrorResponse } from '@angular/common/http';

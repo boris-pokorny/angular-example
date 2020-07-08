@@ -3,7 +3,7 @@ import { provideMockActions } from '@ngrx/effects/testing';
 import { Observable, of } from 'rxjs';
 
 import { UserEffects } from './user.effects';
-import { ApiService } from '../../services/api.service';
+import { ApiService } from '../../../app-core/services/services/api.service';
 import * as userActions from '../actions/user.actions';
 
 class MockApiService {

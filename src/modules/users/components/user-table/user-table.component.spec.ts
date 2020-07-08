@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { UserTableComponent } from './user-table.component';
 import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { TableLayoutComponent } from '../table-layout/table-layout.component';
+import { TableLayoutComponent } from '../../../app-core/components/table-layout/table-layout.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
