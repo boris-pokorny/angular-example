@@ -1,0 +1,35 @@
+<button mat-icon-button (click)="onCancel()" [disabled]="false">
+  Close editor
+  <mat-icon>close</mat-icon>
+</button>
+
+<div [formGroup]="form" class="form-vertical">
+  <mat-form-field class="form-field">
+    <input
+      matInput
+      [placeholder]="'Email'"
+      formControlName="email"
+      type="email"
+      required
+    />
+    <!-- <mat-error *ngIf="getErrorMessage('name') as message">{{
+        message | translate
+      }}</mat-error> -->
+  </mat-form-field>
+
+  <mat-form-field class="form-field">
+    <input matInput [placeholder]="'First name'" formControlName="firstName" />
+  </mat-form-field>
+
+  <mat-form-field class="form-field">
+    <input matInput [placeholder]="'Last name'" formControlName="lastName" />
+  </mat-form-field>
+</div>
+
+<button
+  mat-raised-button
+  (click)="onConfirm()"
+  [disabled]="form.invalid || form.pristine"
+>
+  Save
+</button>

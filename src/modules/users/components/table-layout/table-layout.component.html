@@ -1,0 +1,32 @@
+<div class="table-header">
+    <div class="table-header--title">
+      <h4>{{ title }}</h4>
+    </div>
+  
+    <!-- <mat-form-field>
+      <input
+        matInput
+        (keyup)="applyFilter($event.target.value)"
+        placeholder="Search"
+      />
+    </mat-form-field> -->
+  
+    <button
+      #addButton
+      mat-icon-button
+      (click)="onAddClick()"
+      [disabled]="disableAdd"
+      matTooltip="Add user"
+      class="add-button"
+    >
+      <mat-icon>add_circle</mat-icon>
+    </button>
+  </div>
+  
+  <div *ngIf="showContent; else noContent">
+    <ng-content></ng-content>
+  </div>
+  <ng-template #noContent>
+    <h4>No data</h4>
+  </ng-template>
+  

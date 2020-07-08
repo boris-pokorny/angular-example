@@ -1,0 +1,9 @@
+<mat-tab-group>
+  <mat-tab label="All users">
+    <app-user-table [dataInput]="users"> </app-user-table>
+  </mat-tab>
+
+  <mat-tab label="Filtered users">
+    <app-user-table [dataInput]="[]"> </app-user-table>
+  </mat-tab>
+</mat-tab-group>

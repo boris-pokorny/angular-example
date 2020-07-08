@@ -1,0 +1,52 @@
+<app-table-layout
+  title="User accounts"
+  [onAddClick]="addUser"
+  [showContent]="dataInput?.length"
+  class="common-table"
+>
+  <div class="table-container">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Email
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <span class="cell-content">{{ element.email }}</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="firstName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          First name
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <span class="cell-content">{{ element.firstName }}</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Last name
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <span class="cell-content">{{ element.lastName }}</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="buttons">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element" class="controls-cell">
+          <app-table-buttons
+            #tableButtons
+            [item]="element"
+            [onEdit]="editUser"
+            [onDelete]="deleteUser"
+          ></app-table-buttons>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</app-table-layout>
