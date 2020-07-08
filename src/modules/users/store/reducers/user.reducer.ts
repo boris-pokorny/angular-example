@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { IUserState, ISingleUser } from '../users.state';
+import { IUserState } from '../users.state';
 import * as userActions from '../actions/user.actions';
 
 export const userFeatureKey = 'user';

@@ -1,5 +1,6 @@
 import { reducer, initialState } from './user.reducer';
 import * as userActions from '../actions/user.actions';
+import { ISingleUser } from '../users.state';
 
 describe('User Reducer', () => {
   describe('an unknown action', () => {
@@ -30,5 +31,24 @@ describe('User Reducer', () => {
       expect(result.loading).toBe(false);
       expect(result.list.data).toEqual(users.data);
     });
+  });
+
+  it('should set created user', () => {
+    const user: ISingleUser = {
+      id: '',
+      firstName: '',
+      lastName: '',
+      email: '',
+      avatar: '',
+    };
+    const users = {
+      data: [],
+    };
+    const action = userActions.createUserSuccess({ data: user });
+
+    const result = reducer({ ...initialState, list: users }, action);
+
+    expect(result.loading).toBe(false);
+    expect(result.list.data).toEqual([user]);
   });
 });
