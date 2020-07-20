@@ -15,7 +15,9 @@ export class UserEffects {
     this.actions$.pipe(
       ofType(userActions.loadUsers.type),
       switchMap(() => {
-        return this.apiService.get<IUserList>(this.url).pipe(
+        const delay = Math.round(Math.random() * 2);
+        const urlWithParams = `${this.url}/?delay=${delay}`;
+        return this.apiService.get<IUserList>(urlWithParams).pipe(
           map((result: IUserList) => {
             return userActions.loadUsersSuccess(result);
           }),

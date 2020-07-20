@@ -5,6 +5,7 @@ import {
 } from '@angular/common/http/testing';
 import { ApiService } from './api.service';
 import { environment } from '../../../environments/environment';
+import { ToastrService, ToastrModule } from 'ngx-toastr';
 
 describe('ApiService', () => {
   let service: ApiService;
@@ -12,7 +13,8 @@ describe('ApiService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, ToastrModule.forRoot()],
+      providers: [ToastrService],
     });
     service = TestBed.inject(ApiService);
     httpMock = TestBed.inject(HttpTestingController);

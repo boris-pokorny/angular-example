@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError, TimeoutError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { map, timeout, catchError } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private toastr: ToastrService) {}
 
   get<TResponse>(url: string, id: string = ''): Observable<TResponse> {
     let urlResource = url;
@@ -16,8 +17,15 @@ export class ApiService {
       urlResource = `${url}/${id}`;
     }
     return this.http.get(`${environment.apiUrl}/${urlResource}`).pipe(
+      timeout(1200),
       map((res: TResponse) => {
         return res;
+      }),
+      catchError((err) => {
+        if (err instanceof TimeoutError) {
+          this.toastr.error('Timeout', '');
+        }
+        return throwError(err);
       })
     );
   }

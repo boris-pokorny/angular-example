@@ -9,6 +9,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormatKeysInterceptor } from './interceptors/format-keys.interceptor';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +20,7 @@ import { FormatKeysInterceptor } from './interceptors/format-keys.interceptor';
     StoreModule.forRoot({}),
     EffectsModule.forRoot(),
     BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [
     {
